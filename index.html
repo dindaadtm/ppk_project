@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Aplikasi Kependudukan</title>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <script type="text/javascript" src="js/app.js"></script>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <style >
+      #gambar{
+        padding: 24%;
+      }
+    </style>
+</head>
+<style>
+	body{
+		font-family: gamelan;
+		background-color: black;
+	}
+	h1{
+		text-align: center;
+	}
+	</style>
+<body>
+<div data-role="panel" id="myPanel" class="ui-body-b"	>
+       <ul data-role="listview" >
+	   	   <li><a href="#page-home">Home</a></li>
+           <li><a href="#page-menupenduduk">Penduduk</a></li>
+           <li><a href="#page-admin">Admin</a></li>
+		   <li><a href="#page-menusurat">Surat</a></li>
+		   <li><a href="#page-about">About</a></li>
+       </ul>
+   </div>
+   <div data-role="page" id="page-home" class="ui-body-b">
+     <div data-role="header">
+      <a href="#myPanel" data-icon="grid" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+      <h1>KEPENDUDUKAN</h1>
+  </div><div data-role="ui-content" style="padding: 50px;" >
+    <img src="penduduk.png" style="height:50%;width:50%" class="img-responsive" alt="error" id="gambar">
+  </div>
+</div>
+<!-- <div data-role="page" id="page-home">
+<section id = "main">
+			<h1>KEPENUDUKAN</h1>
+			<a href="#page-add"><button class="ui-corner-all">ADD PENDUDUK</button></a>
+			<a href="#page-one"><button class="ui-corner-all">DATA PENDUDUK</button></a>
+			<a href="#page-admin"><button class="ui-corner-all">DATA ADMIN</button></a>
+ 			<a href="#page-surat"><button class="ui-corner-all">ADD SURAT</button></a>
+ 			<a href="#page-tampilsurat"><button class="ui-corner-all">TAMPIL SURAT</button></a>
+
+			</section>
+</div>	 -->
+
+<div data-role="page" id="page-menupenduduk" class="ui-body-b">
+<section id = "main">
+<div data-role="header">
+		<a href="#page-home" data-icon="back" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+	</div>
+				<h1>PENDUDUK</h1>
+
+ 						<a href="#page-add"><button class="ui-corner-all">ADD PENDUDUK</button></a>
+			<a href="#page-one"><button class="ui-corner-all">DATA PENDUDUK</button></a>
+
+
+			</section>
+</div>
+
+
+<div data-role="page" id="page-menusurat" class="ui-body-b">
+<section id = "main">
+<div data-role="header">
+		<a href="#page-home" data-icon="back" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+	</div>
+				<h1>SURAT</h1>
+
+ 			<a href="#page-surat"><button class="ui-corner-all">ADD SURAT</button></a>
+ 			<a href="#page-tampilsurat"><button class="ui-corner-all">TAMPIL SURAT</button></a>
+
+			</section>
+</div>
+<div data-role="page" id="page-add" class="ui-body-b">
+	<section id = "main2">
+	<div data-role="header">
+                <a href="#page-menupenduduk" data-icon="back" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+	</div>
+			<h1>ADD PENDUDUK</h1>
+
+<form method="post" class="form-user">		
+					ID Penduduk
+  					<input type="text" name="idpenduduk" id="idpenduduk" >
+  					Nama Penduduk
+  					<input type="text"  name="namapenduduk" id="namapenduduk">
+  					Alamat
+  					<input type="text"  name="alamat" id="alamat">
+					No. HP
+  					<input type="text"  name="no" id="no">
+  					Jenis Kelamin
+  					<input type="text"  name="jk" id="jk">
+  					Gaji
+  					<input type="text"  name="gaji" id="gaji">
+  					
+			<a data-role="button" id="buttonSend">ADD</a>
+	</form>
+	</section>
+</div>
+
+<div data-role="page" id="page-one" class="ui-body-b">
+	<section id = "main2">
+	<div data-role="header">
+			<a href="#page-menupenduduk" data-icon="back" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+		</div>
+				<h1>DAFTAR PENDUDUK</h1>
+
+		<div role="main" class="ul-content">
+		<ul id="list-villager" data-role="listview" data-inset="true" data-filter="true">
+		</ul>
+		<a href="#page-delete"><button class="ui-corner-all">HAPUS PENDUDUK</button></a>
+	</div>		
+	</div>
+	</section>
+</div>	
+
+<div data-role="page" id="page-two" class="ui-body-b">
+	<section id = "main2">
+	<div data-role="header">
+		<a href="#page-one" data-icon="back" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+	</div>
+			<h1>DETAIL PENDUDUK</h1>
+
+		<form method="post" class="form-user">		
+		<p id="p-id"></p>
+		<p id="p-nama"></p>
+		<p id="p-alamat"></p>
+		<p id="p-nohp"></p>
+		<p id="p-jk"></p>
+		<p id="p-gaji"></p>
+
+</form>
+			<a data-role="button" id="buttonUpdate">UPDATE</a>
+</section>
+</div>
+
+<div data-role="page" id="page-delete" class="ui-body-b">
+	<section id = "main2">
+	<div data-role="header">
+		<a href="#page-one" data-icon="back" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+	</div>
+			<h1>HAPUS PENDUDUK</h1>
+
+	<form method="post" class="form-user">		
+					<br>Delete By ID
+  					<input type="text"  name="id" id="id">
+			<a data-role="button" id="buttonDelete">Delete</a>
+
+	</form>
+	<div role="main" class="ul-content">
+		<ul id="list-villagerdel" data-role="listview" data-inset="true">
+		</ul>
+	</div>
+	</section>
+</div>	
+
+<div data-role="page" id="page-admin" class="ui-body-b">
+		<section id = "main2">
+
+	<div data-role="header">
+		<a href="#page-home" data-icon="back" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+	</div>
+			<h1>DAFTAR ADMIN</h1>
+
+	<div role="main" class="ul-content">
+		<ul id="list-admin" data-role="listview" data-inset="true" data-filter="true">
+		</ul>
+	</div>
+	</section>
+</div>	
+
+<div data-role="page" id="page-surat" class="ui-body-b">
+	<section id = "main2">
+ <div data-role="header">
+ 	<a href="#page-menusurat" data-icon="back" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+ </div>
+   	<h1>TAMBAH SURAT</h1>
+
+ <div role="main" class="ui-content">
+  <ul data-role="listview" data-inset="true">
+   <li data-role="collapsible">
+    <h2>Daftar Admin</h2>
+    <ul id="list-adminsurat" data-role="listview" data-inset="true" data-filter="true" >
+  </ul>
+   </li>
+  </ul>
+  ID Admin<br>
+       <input type="text" name="idadmin" id="idadmin"><br>
+
+  <ul data-role="listview" data-inset="true" >
+   <li data-role="collapsible">
+    <h2>Daftar Penduduk</h2>
+    <ul id="list-pddsurat" data-role="listview" data-inset="true" data-filter="true">
+  </ul>
+   </li>
+  </ul>
+        ID Penduduk<br>
+       <input type="text" name="id_penduduk" id="id_penduduk"><br>
+       ID Surat<br>
+       <input type="text" name="idsurat" id="idsurat"><br>
+       Keterangan Surat<br>
+       <input type="text" name="ketsurat" id="ketsurat"><br>
+			<a data-role="button" id="buttonSurat">Surat</a>
+
+
+ </div>
+ </section>
+</div>
+
+<div data-role="page" id="page-tampilsurat" class="ui-body-b">
+	<section id = "main2">
+
+	<div data-role="header">
+	<a href="#page-menusurat" data-icon="back" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+	</div>
+			<h1>DAFTAR SURAT</h1>
+
+	<div role="main" class="ul-content">
+		<ul id="list-surat" data-role="listview" data-inset="true" data-filter="true">
+		</ul>
+	</div>
+</section>
+</div>	
+<div data-role="page" id="page-about" class="ui-body-b">
+  <div data-role="header">
+      <a href="#myPanel" data-icon="back" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+  </div role="main" class="ui-content" class="ui-body-b">
+        <h2>ABOUT</h2>
+
+    <h5> Web ini dibuat untuk data kependudukan, data kepundudukan adalah segala  tampilan data penduduk dalam bentuk resmi 
+	maupun tidak resmi yang diterbitkan oleh badan-badan pencatatan kependudukan (pemerintah maupun non pemerintah)</h5>
+  </div>
+<script src="js/app.js" type="text/javascript"></script>
+<script>Application.initApplication();</script>
+
+</body>
+</html>
